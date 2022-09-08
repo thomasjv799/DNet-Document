@@ -7,7 +7,7 @@ Calculating the object distance from a camera is a fundamental machine vision pr
 Paper followed: 
 “Toward Hierarchical Self-Supervised Monocular Absolute Depth Estimation for Autonomous Driving Applications”.
 This paper has an idea of implementing self-supervised method with DNet architecture. At first relative depth estimation is done with the dense connected prediction (DCP) that hierarchically combines features in different levels and handles local gradients, after which scale recovery is done to get ground-level depth. We estimate scale factor for current relative depth and from there absolute depth is calculated pixel-wise.
-Github repo: [Dnet]{https://github.com/TJ-IPLab/DNet}
+Github repo: [TJ-IPLab/Dnet](https://github.com/TJ-IPLab/DNet)
 
 ## Basic Idea
 DNet architecture is followed here for testing models. DNet is a self-supervised monocular depth estimation pipeline that exploits densely connected hierarchical features to obtain more precise object-level depth inference and uses dense geometrical constraints to perform scale recovery. We evaluate the depth of custom images by testing on a pretrained model. Here we use custom images to observe how the architecture is performing. We evaluate the relative depth from that model and perform scale recovery using dense geometrical constrain module. Then we estimate the absolute depth. Then we use Mask RCNN to detect the particular object in the image and calculate mean absolute depth value, thus considering it as the depth from camera.
@@ -22,7 +22,7 @@ We have used mobile cameras while they have used on-board cameras to capture the
 
 From the above observations it is clear the model is giving good and bad results. The Only variable that can affect this is the camera height. Both indoor and outdoor images were used. In both the cases the with respect to various camera height the model is performing differently. The evidence for this is in the case of Motorcycle, even though the camera height is between 150-165 cm for it, the model is performing very badly. But when we gave the metric as a random value in this case at 45, the deviation decreased from around 300 % to less than 10 % even though 45 wasn’t the correct height.
 
-## 6.	Output
+## Output
 
 |Object Tag	|Camera Height(appox)	|Actual Distance| Predicted Distance|	Deviation|
 | --- | --- | --- | --- | --- |
@@ -34,4 +34,24 @@ From the above observations it is clear the model is giving good and bad results
 |Motorcycle	|Random (45 cm)|	500 cm|	5.37 m|	7.4 %|
 |Motorcycle	|165 cm|	6 m	|20.45 m|	240 %|
 |Motorcycle|	Random (45 cm)|	6 m|	5.58 m|	7 %|
+
+
+![alt text](https://github.com/wanderer799/DNet-Document/blob/main/Dataset/Picture2.png?raw=true)
+ACTUAL DISTANCE = 0.90m 
+PREDICTED DISTANCE = 1.09m 
+DEVIATION = 21.1%
+
+![alt text](https://github.com/wanderer799/DNet-Document/blob/main/Dataset/Picture3.png?raw=true)
+ACTUAL DISTANCE = 3.00 m 
+PREDICTED DISTANCE = 3.38 m 
+DEVIATION=12.6 %
+
+![alt text](https://github.com/wanderer799/DNet-Document/blob/main/Dataset/Picture4.png?raw=true)
+ACTUAL DISTANCE = 6 m 
+PREDICTED DISTANCE = 5.58 m 
+DEVIATION=7 %
+
+## Conclusion
+The Camera height we are giving may not be the exact height. For the same object at different height it is giving varying values. I am not able to figure out a way for this. More research on how they are analysing this camera height is needed in order to move forward.
+
 
