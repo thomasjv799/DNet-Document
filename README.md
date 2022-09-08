@@ -4,9 +4,10 @@
 Calculating the object distance from a camera is a fundamental machine vision problem. To calculate distance of an object from camera by estimating the size of the object from an image, given only the raw image file and no metadata except for the resolution and number of pixels and then interfacing it with Mask RCNN to get the distance of the target object.
 
 ## Methods and reference
-Paper followed: “Toward Hierarchical Self-Supervised Monocular Absolute Depth Estimation for Autonomous Driving Applications”.
+Paper followed: 
+“Toward Hierarchical Self-Supervised Monocular Absolute Depth Estimation for Autonomous Driving Applications”.
 This paper has an idea of implementing self-supervised method with DNet architecture. At first relative depth estimation is done with the dense connected prediction (DCP) that hierarchically combines features in different levels and handles local gradients, after which scale recovery is done to get ground-level depth. We estimate scale factor for current relative depth and from there absolute depth is calculated pixel-wise.
-•	Github repo: [Dnet]{https://github.com/TJ-IPLab/DNet}
+Github repo: [Dnet]{https://github.com/TJ-IPLab/DNet}
 
 ## Basic Idea
 DNet architecture is followed here for testing models. DNet is a self-supervised monocular depth estimation pipeline that exploits densely connected hierarchical features to obtain more precise object-level depth inference and uses dense geometrical constraints to perform scale recovery. We evaluate the depth of custom images by testing on a pretrained model. Here we use custom images to observe how the architecture is performing. We evaluate the relative depth from that model and perform scale recovery using dense geometrical constrain module. Then we estimate the absolute depth. Then we use Mask RCNN to detect the particular object in the image and calculate mean absolute depth value, thus considering it as the depth from camera.
