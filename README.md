@@ -1,4 +1,4 @@
-# Evaluting Monocular Absolute Depth prediction on varios Objects
+# Evaluting Monocular Absolute Depth prediction on various Objects
 
 ## Introduction
 Calculating the object distance from a camera is a fundamental machine vision problem. To calculate distance of an object from camera by estimating the size of the object from an image, given only the raw image file and no metadata except for the resolution and number of pixels and then interfacing it with Mask RCNN to get the distance of the target object.
